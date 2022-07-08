@@ -75,7 +75,7 @@
 
   <details>
     <summary>
-      How does it looks like?
+      What does it look like?
     </summary>
     <img src="./images/FPGA1.jpg">
     <img src="./images/FPGA2.png">
@@ -93,7 +93,7 @@
 
 |类型|指令|
 |-|-|
-|R |add, sub, and, sub, or, xor, sll, srl, sra, slt, sltu |
+|R |add, sub, and, or, xor, sll, srl, sra, slt, sltu |
 |I |addi, andi, ori, xori, slli, srli, srai, slti, sltiu, lb, lbu, lh, lhu, lw, jalr |
 |S |sb, sh, sw |
 |B |beq, bne, blt, bltu, bge, bgeu |
@@ -121,14 +121,14 @@
   output led[23:0]    
   // 数码管
   output digit_tube_en[7:0] //使能信号
-  output len_ca
-  output len_cb
-  output len_cc
-  output len_cd
-  output len_ce
-  output len_cf
-  output len_cg
-  output len_dp
+  output led_ca
+  output led_cb
+  output led_cc
+  output led_cd
+  output led_ce
+  output led_cf
+  output led_cg
+  output led_dp
 ```
 ### More
 
@@ -136,7 +136,7 @@
 
 |已经实现的|可以但待实现的|
 |-|-|
-|拨码开关，数码管，led灯，按键开关|4 * 4 按键，usb，显示屏...|
+|拨码开关，数码管，led灯，按键开关|4 * 4 键盘，usb，显示屏，流水灯...|
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -180,7 +180,7 @@ top.v / top_computer.v   // 整机
 ## About Design 
 
 1.  数据冒险
-    * 使用前递解决非load-use使用类型的数据冒险
+    * 使用前递解决非load-use类型的数据冒险
     * 停顿加数据前递解决load-use型数据冒险
 2.  控制冒险
     * 总是预测不发生跳转
@@ -199,15 +199,15 @@ etc...
 
 ## Important Tips
 
-* **关于RF:**
-  WB和ID阶段操作都涉及到RF，当处于这两个阶段的两条指令的所操作的寄存器相同，那么需要进行判断，如果要读取的寄存器和要读的寄存器相同，那么需要将写回的寄存器的值在写回寄存器堆的同时输出（即，作为读取寄存器堆的值输出）。
+* **RF相关:**
+  WB和ID阶段操作都涉及到RF，当处于这两个阶段的两条指令的所操作的寄存器相同，那么需要进行判断，如果要读取的寄存器和要写的寄存器相同，那么需要将写回的寄存器的值在写回寄存器堆的同时输出（即，作为读取寄存器堆的值输出）。</br>
   **原因：**
   RF的读取是组合逻辑，但是写入受时钟控制。
   如果不处理，将导致读取的是寄存器堆的旧值，而即将写入的新值（即，ID阶段指令真正要读取的值）在下一个时钟上升沿到来时，才会写入；而当写入的内容写入RF时，读取的指令早已经将旧值读走。
 
-* **关于trace：**
+* **trace相关：**
   1. 单周期：debug_have_inst 恒为1
-  2. 流水线：debug_have_inst 不恒为1，这与流水线需要**停顿**处理冒险有关
+  2. 流水线：debug_have_inst 不恒为1，这与流水线需要**停顿**处理冒险有关</br>
       当停顿时，等价于nop（空指令），此时这条指令并不是trace中所应该出现的指令（不是trace程序所期望会出现的指令），所以此时debug_have_inst应该置为0。
 
 <p align="right">(<a href="#top">back to top</a>)</p>
