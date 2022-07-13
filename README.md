@@ -188,6 +188,14 @@ top.v / top_computer.v   // 整机
 3.  处理冒险的时间
     * 由于设计失误，导致本项目现在的数据冒险和控制冒险都是在EXE（即执行阶段）进行
 
+  <details>
+    <summary>
+      see pipe-line-module-diagram?
+    </summary>
+    <img src="./images/pipeline_module.jpg">
+    </img>
+  </details>
+
 ### How to Enhance
 
 1.  可以将处理数据冒险和控制冒险提前到ID阶段进行，理论上性能更优
