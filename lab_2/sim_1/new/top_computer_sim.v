@@ -10,7 +10,7 @@ module top_computer_sim(
 
     top_computer u_top_computer(
         .clk       (clk   ),
-        .rst_n       (rst )
+        .rst       (rst   )
     );
 
     always #1 clk = ~clk;
@@ -18,8 +18,8 @@ module top_computer_sim(
     initial begin
         #0          clk = 0;
                     rst = 0;
-        #50         rst = 1;
-        #50        rst = 0;
+        #500        rst = 1;
+        #50         rst = 0;
     end
 
 

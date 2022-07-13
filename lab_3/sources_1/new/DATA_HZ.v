@@ -44,21 +44,24 @@ module DATA_HZ (
     */ 
     always @(*) begin
         if (exe_is_load_i && (exe_rf_wr_i == id_rf_sr1_i
-                || exe_rf_wr_i == id_rf_sr2_i))
+                || exe_rf_wr_i == id_rf_sr2_i)
+                && exe_rf_wr_i != 5'b0)
             pc_stall_o = `CON_ENABLE;
         else 
             pc_stall_o = ~`CON_ENABLE; 
     end
     always @(*) begin
         if (exe_is_load_i && (exe_rf_wr_i == id_rf_sr1_i
-                || exe_rf_wr_i == id_rf_sr2_i))
+                || exe_rf_wr_i == id_rf_sr2_i)
+                && exe_rf_wr_i != 5'b0)
             if_id_stall_o = `CON_ENABLE;
         else 
             if_id_stall_o = ~`CON_ENABLE; 
     end
     always @(*) begin
         if (exe_is_load_i && (exe_rf_wr_i == id_rf_sr1_i
-                || exe_rf_wr_i == id_rf_sr2_i))
+                || exe_rf_wr_i == id_rf_sr2_i)
+                && exe_rf_wr_i != 5'b0)
             id_exe_flush_o = `CON_ENABLE;
         else 
             id_exe_flush_o = ~`CON_ENABLE; 
