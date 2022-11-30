@@ -55,16 +55,11 @@
 * lab_2：单周期cpu
 * lab_3：流水线cpu
 
-* 课程指导书（自行搜索...）
-
-
-
 ### Pre-Knowledge
 
 * 数字逻辑
-* verilog
+* verilog编程基础
 * 计算机组成原理
-
 
 ### Tool
 
@@ -89,7 +84,7 @@
 
 ## Feature
 
-1. 实现37条指令
+1. 实现了miniRV-1的全部指令，共**37**条。（miniRV-1为RV32I的子集）
 
 |类型|指令|
 |-|-|
@@ -157,7 +152,7 @@ top.v / top_computer.v   // 整机
 │   └── SwitchDriver.v          // 拨码开关 IO接口
 ├── IROM.v                      // 指令存储器
 ├── mini_RV.v                   // cpu
-│   ├── PC.v                    // pc，npc单元
+│   ├── PC.v                    // pc, npc单元
 │   ├── RF.v                    // 寄存器堆
 │   ├── SEXT.v                  // 立即数扩展单元
 │   ├── ALU.v                   // 计算单元
