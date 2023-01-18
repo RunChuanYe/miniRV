@@ -237,7 +237,7 @@ Contributions are what make the open source community such an amazing place to l
 
 Distributed under the MIT License. See `LICENSE.txt` for more information.
 
-## Acknowledgments
+## Acknowledgements
 
 * [Simple digital tube implementation](https://github.com/xyfJASON/HITSZ-miniRV-1/blob/main/single_cycle/sources_1/new/display.v)
 * [Flying Fish](https://github.com/huang-feiyu)
