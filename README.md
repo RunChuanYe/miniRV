@@ -40,7 +40,7 @@
       </ul>
     </li>
     <li><a href="#license">License</a></li>
-    <li><a href="#acknowledgements">Acknowledgments</a></li>
+    <li><a href="#acknowledgements">Acknowledgements</a></li>
   </ol>
 </details>
 
